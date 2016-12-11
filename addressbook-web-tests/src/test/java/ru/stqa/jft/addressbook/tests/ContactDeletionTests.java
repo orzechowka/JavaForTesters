@@ -15,8 +15,7 @@ public class ContactDeletionTests extends TestBase {
         app.getNavigationHelper().goToHomepage();
         app.getContactHelper().selectContact();
         app.getContactHelper().deleteSelectedContacts();
-        FirefoxDriver wd = new FirefoxDriver();
-        wd.switchTo().alert().accept();
+        app.getContactHelper().acceptAlert();
         app.getNavigationHelper().goToHomepage();
 
     }
