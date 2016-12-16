@@ -14,12 +14,27 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void goToGroupPage() {
+        if (isElementPresent(By.tagName("h1"))
+                && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+                && isElementPresent(By.name("new"))) {
+            return;
+        }
         click(By.linkText("grupy"));
     }
 
     public void goToNewContact() {
+        if (isElementPresent(By.tagName("h1"))
+                && wd.findElement(By.tagName("h1")).getText().equals("Edytuj / dodaj wpis do książki adresowej\n" +
+                "\n")) {
+            return;
+        }
         click(By.linkText("nowy wpis"));
     }
 
-    public void goToHomepage() { click(By.linkText("strona główna")); }
+    public void goToHomepage() {
+        if (isElementPresent(By.name("maintable"))) {
+            return;
+        }
+        click(By.linkText("strona główna"));
+    }
 }
