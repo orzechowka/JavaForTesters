@@ -11,6 +11,10 @@ public class ContactModificationTests extends TestBase {
     @Test
     public void testContactModification(){
         app.getNavigationHelper().goToHomepage();
+        if (!app.getContactHelper().isThereAContact()) {
+            app.getNavigationHelper().goToNewContact();
+            app.getContactHelper().createContact(new ContactData("Jan", "Kowalski", "Zielona 7", "123543123", "kowalski@poczta.pl", "test1"));
+        }
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillContactForm(new ContactData("Jan", "Kowalski", "Zielona 7", "123543123", "kowalski@poczta.pl", null), false);
         app.getContactHelper().submitContactModification();
