@@ -2,6 +2,7 @@ package ru.stqa.jft.addressbook.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.jft.addressbook.model.ContactData;
 
@@ -18,10 +19,13 @@ public class ContactDeletionTests extends TestBase {
             app.getNavigationHelper().goToNewContact();
             app.getContactHelper().createContact(new ContactData("Jan", "Kowalski", "Zielona 7", "123543123", "kowalski@poczta.pl", "test1"));
         }
+        int before = app.getContactHelper().getContactCount();
         app.getContactHelper().selectContact();
         app.getContactHelper().deleteSelectedContacts();
         app.getContactHelper().acceptAlert();
         app.getNavigationHelper().goToHomepage();
+        int after = app.getContactHelper().getContactCount();
+        Assert.assertEquals(after, before - 1);
 
     }
 }

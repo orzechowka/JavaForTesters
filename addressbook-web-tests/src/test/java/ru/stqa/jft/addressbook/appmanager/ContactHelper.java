@@ -68,6 +68,10 @@ public class ContactHelper extends HelperBase {
 
 
     public boolean isThereAContact() {
-        return isElementPresent(By.xpath("/html/body/div/div[4]/form[2]/table/tbody/tr[2]/td[1]/input"));
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    public int getContactCount() {
+        return wd.findElements(By.name("selected[]")).size();
     }
 }
