@@ -11,7 +11,6 @@ import ru.stqa.jft.addressbook.model.ContactData;
  */
 public class ContactDeletionTests extends TestBase {
 
-    //to fix
     @Test
     public void testContactDeletion() {
         app.getNavigationHelper().goToHomepage();
@@ -26,6 +25,11 @@ public class ContactDeletionTests extends TestBase {
         app.getNavigationHelper().goToHomepage();
         int after = app.getContactHelper().getContactCount();
         Assert.assertEquals(after, before - 1);
+
+        /*
+        before.remove(before.size() - 1);
+        Assert.assertEquals(before, after);
+        */
 
     }
 }
