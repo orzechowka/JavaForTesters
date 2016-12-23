@@ -1,6 +1,7 @@
 package ru.stqa.jft.addressbook.model;
 
 public class ContactData {
+    private final String id;
     private final String name;
     private final String surname;
     private final String address;
@@ -10,6 +11,7 @@ public class ContactData {
 
 
     public ContactData(String name, String surname, String address, String mobileNumber, String email1, String group) {
+        this.id = null;
         this.name = name;
         this.surname = surname;
         this.address = address;
@@ -18,7 +20,17 @@ public class ContactData {
         this.group = group;
     }
 
-    /*
+    public ContactData(String id, String name, String surname, String address, String mobileNumber, String email1, String group) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.address = address;
+        this.mobileNumber = mobileNumber;
+        this.email1 = email1;
+        this.group = group;
+    }
+
+
     @Override
     public String toString() {
         return "ContactData{" +
@@ -45,7 +57,7 @@ public class ContactData {
         return result;
     }
 
-    */
+
 
     public String getName() {
         return name;
