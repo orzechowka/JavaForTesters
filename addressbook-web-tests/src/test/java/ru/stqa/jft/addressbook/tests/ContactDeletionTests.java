@@ -15,7 +15,7 @@ public class ContactDeletionTests extends TestBase {
 
     @Test
     public void testContactDeletion() {
-        app.getNavigationHelper().goToHomepage();
+        //app.getNavigationHelper().goToHomepage();
         if (!app.getContactHelper().isThereAContact()) {
             app.getNavigationHelper().goToNewContact();
             app.getContactHelper().createContact(new ContactData("Jan", "Kowalski", "Zielona 7", "123543123", "kowalski@poczta.pl", "test1"));

@@ -7,11 +7,6 @@ public class GroupData {
     private final String footer;
 
 
-
-    public String getId() {
-        return id;
-    }
-
     public GroupData(String name, String header, String footer) {
         this.id = null;
         this.name = name;
@@ -37,6 +32,8 @@ public class GroupData {
     public String getFooter() {
         return footer;
     }
+
+    public String getId() { return id; }
 
     @Override
     public boolean equals(Object o) {
