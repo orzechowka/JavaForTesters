@@ -1,13 +1,49 @@
 package ru.stqa.jft.addressbook.model;
 
 public class ContactData {
-    private int id;
-    private final String name;
-    private final String surname;
-    private final String address;
-    private final String mobileNumber;
-    private final String email1;
-    private final String group;
+    private int id  = Integer.MAX_VALUE;
+    private String name;
+    private String surname;
+    private String address;
+    private String mobileNumber;
+    private String email1;
+
+    public ContactData withId(int id) {
+        this.id = id;
+        return this;
+    }
+
+    public ContactData withName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public ContactData withSurname(String surname) {
+        this.surname = surname;
+        return this;
+    }
+
+    public ContactData withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public ContactData withMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+        return this;
+    }
+
+    public ContactData withEmail1(String email1) {
+        this.email1 = email1;
+        return this;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
+    }
+
+    private String group;
 
 
     @Override
@@ -28,25 +64,6 @@ public class ContactData {
         return result;
     }
 
-    public ContactData(String name, String surname, String address, String mobileNumber, String email1, String group) {
-        this.id = Integer.MAX_VALUE;
-        this.name = name;
-        this.surname = surname;
-        this.address = address;
-        this.mobileNumber = mobileNumber;
-        this.email1 = email1;
-        this.group = group;
-    }
-
-    public ContactData(int id, String name, String surname, String address, String mobileNumber, String email1, String group) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.address = address;
-        this.mobileNumber = mobileNumber;
-        this.email1 = email1;
-        this.group = group;
-    }
 
     public String getName() {
         return name;
@@ -72,9 +89,7 @@ public class ContactData {
         return group;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 
     @Override
     public String toString() {
