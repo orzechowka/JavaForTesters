@@ -8,6 +8,24 @@ public class ContactData {
     private String mobileNumber;
     private String email1;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ContactData that = (ContactData) o;
+
+        if (id != that.id) return false;
+        return name != null ? name.equals(that.name) : that.name == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
+    }
+
     public ContactData withId(int id) {
         this.id = id;
         return this;
@@ -44,25 +62,6 @@ public class ContactData {
     }
 
     private String group;
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ContactData that = (ContactData) o;
-
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        return surname != null ? surname.equals(that.surname) : that.surname == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        return result;
-    }
 
 
     public String getName() {
