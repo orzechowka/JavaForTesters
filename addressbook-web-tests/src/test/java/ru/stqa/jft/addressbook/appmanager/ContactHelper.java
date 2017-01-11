@@ -175,4 +175,24 @@ public class ContactHelper extends HelperBase {
 
 
     }
+
+    public ContactData infoFromDetailsPage(ContactData contact) {
+        openDetailsPageById(contact.getId());
+        WebElement a = wd.findElement(By.id("content"));
+        String[] nameAndSurname = a.findElement(By.tagName("b")).getText().split(" ");
+        String name = nameAndSurname[0];
+        String surname = nameAndSurname[1];
+        String address = wd.findElement(By.xpath("//div[@id='contact']/br")).getText();
+        String homeNumber = wd.findElement(By.xpath("//div[@id='contact']/br/br/br")).getText();
+        String mobileNumber = wd.findElement(By.xpath("//div[@id='contact']/br/br/br/br")).getText();
+        String workNumber = wd.findElement(By.xpath("//div[@id='contact']/br/br/br/br/br")).getText();
+        String email = a.findElement(By.tagName("a")).getText();
+        String group = wd.findElement(By.xpath("//i/a")).getText();
+        return new ContactData().withName(name).withSurname(surname).withAddress(address).withHomeNumber(homeNumber)
+                .withMobileNumber(mobileNumber).withWorkNumber(workNumber).withEmail1(email).withGroup(group);
+    }
+
+    private void openDetailsPageById(int id) {
+        wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
+    }
 }
