@@ -8,9 +8,20 @@ public class ContactData {
     private String homeNumber;
     private String mobileNumber;
     private String workNumber;
+    private String allPhones;
     private String email1;
 
+    public String getAllPhones() {
+        return allPhones;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
+
     @Override
+
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -122,8 +133,5 @@ public class ContactData {
     public int getId() {
         return id;
     }
-
-
-
 }
 

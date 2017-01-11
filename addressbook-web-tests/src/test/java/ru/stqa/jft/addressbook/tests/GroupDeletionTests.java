@@ -7,11 +7,9 @@ import org.testng.annotations.Test;
 import ru.stqa.jft.addressbook.model.GroupData;
 import ru.stqa.jft.addressbook.model.Groups;
 
-import java.util.Set;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.testng.Assert.assertEquals;
+
 
 public class GroupDeletionTests extends TestBase {
 
