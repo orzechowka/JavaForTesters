@@ -30,8 +30,6 @@ public class ContactPhoneTests extends TestBase {
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
         MatcherAssert.assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
-        //MatcherAssert.assertThat(contact.getMobileNumber(), equalTo(cleaned(contactInfoFromEditForm.getMobileNumber())));
-        //MatcherAssert.assertThat(contact.getWorkNumber(), equalTo(cleaned(contactInfoFromEditForm.getWorkNumber())));
         MatcherAssert.assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
         MatcherAssert.assertThat(contact.getEmail1(), equalTo(contactInfoFromEditForm.getEmail1()));
     }

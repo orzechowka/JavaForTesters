@@ -11,6 +11,17 @@ public class ContactData {
     private String allPhones;
     private String email1;
 
+    public ContactData withNamesAndSurname(String namesAndSurname) {
+        this.namesAndSurname = namesAndSurname;
+        return this;
+    }
+
+    private String namesAndSurname;
+
+    public String getNamesAndSurname() {
+        return namesAndSurname;
+    }
+
     public String getAllPhones() {
         return allPhones;
     }
@@ -19,6 +30,8 @@ public class ContactData {
         this.allPhones = allPhones;
         return this;
     }
+
+
 
     @Override
 
@@ -133,5 +146,7 @@ public class ContactData {
     public int getId() {
         return id;
     }
+
+
 }
 

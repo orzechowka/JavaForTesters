@@ -1,19 +1,15 @@
 package ru.stqa.jft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.jft.addressbook.model.ContactData;
 import ru.stqa.jft.addressbook.model.Contacts;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Anna on 2016-12-10.
@@ -178,18 +174,18 @@ public class ContactHelper extends HelperBase {
 
     public ContactData infoFromDetailsPage(ContactData contact) {
         openDetailsPageById(contact.getId());
-        WebElement a = wd.findElement(By.id("content"));
-        String[] nameAndSurname = a.findElement(By.tagName("b")).getText().split(" ");
-        String name = nameAndSurname[0];
-        String surname = nameAndSurname[1];
-        String address = wd.findElement(By.xpath("//div[@id='contact']/br")).getText();
-        String homeNumber = wd.findElement(By.xpath("//div[@id='contact']/br/br/br")).getText();
-        String mobileNumber = wd.findElement(By.xpath("//div[@id='contact']/br/br/br/br")).getText();
-        String workNumber = wd.findElement(By.xpath("//div[@id='contact']/br/br/br/br/br")).getText();
-        String email = a.findElement(By.tagName("a")).getText();
-        String group = wd.findElement(By.xpath("//i/a")).getText();
-        return new ContactData().withName(name).withSurname(surname).withAddress(address).withHomeNumber(homeNumber)
+        WebElement element = wd.findElement(By.id("content"));
+        String namesAndSurname = element.findElement(By.xpath("/html/body/div/div[4]/b")).getText();
+        /*String address = wd.findElement(By.xpath("/html/body/div/div[4]/br[1]")).getText();
+        String homeNumber = wd.findElement(By.xpath("/html/body/div/div[4]/br[3]")).getText();
+        String mobileNumber = wd.findElement(By.xpath("/html/body/div/div[4]/br[4]")).getText();
+        String workNumber = wd.findElement(By.xpath("/html/body/div/div[4]/br[5]")).getText();*/
+        String email = element.findElement(By.tagName("a")).getText();
+        /*
+        return new ContactData().withNamesAndSurname(namesAndSurname).withAddress(address).withHomeNumber(homeNumber)
                 .withMobileNumber(mobileNumber).withWorkNumber(workNumber).withEmail1(email).withGroup(group);
+        */
+        return new ContactData().withNamesAndSurname(namesAndSurname).withEmail1(email);
     }
 
     private void openDetailsPageById(int id) {
