@@ -3,7 +3,6 @@ package ru.stqa.jft.addressbook.tests;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
-import com.sun.xml.internal.org.jvnet.fastinfoset.stax.LowLevelFastInfosetStreamWriter;
 import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
