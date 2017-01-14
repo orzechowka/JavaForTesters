@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import ru.stqa.jft.addressbook.model.ContactData;
 import ru.stqa.jft.addressbook.model.Contacts;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,10 +18,17 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ContactCreationTests extends TestBase {
 
     @DataProvider
-    public Iterator<Object[]> validContacts() {
+    public Iterator<Object[]> validContacts() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        list.add(new Object[] {new ContactData().withName("name1").withSurname("surname1").withHomeNumber("number1")
-                .withMobileNumber("number1").withWorkNumber("number1").withAddress("address1").withEmail1("email1").withGroup("test1")});
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.csv")));
+        String line = reader.readLine();
+        while (line != null) {
+            String[] split = line.split(";");
+            list.add(new Object[] {new ContactData().withName(split[0]).withSurname(split[1]).withAddress(split[2])
+                    .withHomeNumber(split[3]).withMobileNumber(split[4]).withWorkNumber(split[5]).withEmail1(split[6])
+                    .withGroup(split[7])});
+            line = reader.readLine();
+        }
         return list.iterator();
     }
 

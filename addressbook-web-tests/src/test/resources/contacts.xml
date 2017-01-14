@@ -7,7 +7,7 @@
     <mobileNumber>mobile number 0</mobileNumber>
     <workNumber>work number 0</workNumber>
     <email1>email 0</email1>
-    <group>group 0</group>
+    <group>test 0</group>
   </contact>
   <contact>
     <name>name 1</name>
@@ -17,7 +17,7 @@
     <mobileNumber>mobile number 1</mobileNumber>
     <workNumber>work number 1</workNumber>
     <email1>email 1</email1>
-    <group>group 1</group>
+    <group>test 1</group>
   </contact>
   <contact>
     <name>name 2</name>
@@ -27,6 +27,6 @@
     <mobileNumber>mobile number 2</mobileNumber>
     <workNumber>work number 2</workNumber>
     <email1>email 2</email1>
-    <group>group 2</group>
+    <group>test 2</group>
   </contact>
 </list>
