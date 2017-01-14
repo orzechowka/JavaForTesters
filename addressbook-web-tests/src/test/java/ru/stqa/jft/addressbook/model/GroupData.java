@@ -6,6 +6,16 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 @XStreamAlias("group")
 public class GroupData {
 
+    @Override
+    public String toString() {
+        return "GroupData{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", header='" + header + '\'' +
+                ", footer='" + footer + '\'' +
+                '}';
+    }
+
     @XStreamOmitField
     private int id  = Integer.MAX_VALUE;
     private String name;
@@ -69,11 +79,4 @@ public class GroupData {
     public int getId() { return id; }
 
 
-    @Override
-    public String toString() {
-        return "GroupData{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }
