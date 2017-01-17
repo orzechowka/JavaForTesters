@@ -28,6 +28,16 @@ public class ContactData {
     @Expose
     private String group;
     private File photo;
+    private String allInfo;
+
+    public String getAllInfo() {
+        return allInfo;
+    }
+
+    public ContactData withAllInfo(String allInfo) {
+        this.allInfo = allInfo;
+        return this;
+    }
 
     public File getPhoto() {
         return photo;
@@ -38,17 +48,6 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withNamesAndSurname(String namesAndSurname) {
-        this.namesAndSurname = namesAndSurname;
-        return this;
-    }
-
-    private String namesAndSurname;
-
-    public String getNamesAndSurname() {
-        return namesAndSurname;
-    }
-
     public String getAllPhones() {
         return allPhones;
     }
@@ -57,8 +56,6 @@ public class ContactData {
         this.allPhones = allPhones;
         return this;
     }
-
-
 
     @Override
 
@@ -172,7 +169,6 @@ public class ContactData {
     public int getId() {
         return id;
     }
-
 
 }
 

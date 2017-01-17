@@ -48,7 +48,6 @@ public class ContactHelper extends HelperBase {
 
     public void initContactModification(int index) {
         wd.findElements(By.xpath("//td/a/img[@src='icons/pencil.png']")).get(index).click();
-
         //click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
     }
 
@@ -108,8 +107,6 @@ public class ContactHelper extends HelperBase {
         acceptAlert();
     }
 
-
-
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
     }
@@ -166,27 +163,13 @@ public class ContactHelper extends HelperBase {
         String work = wd.findElement(By.name("work")).getAttribute("value");
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withName(firstname).withSurname(lastname).withAddress(address).withEmail1(mailAddress).withHomeNumber(home).withMobileNumber(mobile).withWorkNumber(work);
-
-
-
-
-
     }
 
     public ContactData infoFromDetailsPage(ContactData contact) {
         openDetailsPageById(contact.getId());
         WebElement element = wd.findElement(By.id("content"));
-        String namesAndSurname = element.findElement(By.xpath("/html/body/div/div[4]/b")).getText();
-        /*String address = wd.findElement(By.xpath("/html/body/div/div[4]/br[1]")).getText();
-        String homeNumber = wd.findElement(By.xpath("/html/body/div/div[4]/br[3]")).getText();
-        String mobileNumber = wd.findElement(By.xpath("/html/body/div/div[4]/br[4]")).getText();
-        String workNumber = wd.findElement(By.xpath("/html/body/div/div[4]/br[5]")).getText();*/
-        String email = element.findElement(By.tagName("a")).getText();
-        /*
-        return new ContactData().withNamesAndSurname(namesAndSurname).withAddress(address).withHomeNumber(homeNumber)
-                .withMobileNumber(mobileNumber).withWorkNumber(workNumber).withEmail1(email).withGroup(group);
-        */
-        return new ContactData().withNamesAndSurname(namesAndSurname).withEmail1(email);
+        String allInfo = element.getText();
+        return new ContactData().withAllInfo(allInfo);
     }
 
     private void openDetailsPageById(int id) {

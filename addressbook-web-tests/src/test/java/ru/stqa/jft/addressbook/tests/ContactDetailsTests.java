@@ -18,15 +18,19 @@ public class ContactDetailsTests extends TestBase{
     public void testContactDetails() {
         app.goTo().goToHomepage();
 
+
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
         ContactData contactInfoFromDetailsPage = app.contact().infoFromDetailsPage(contact);
 
-        MatcherAssert.assertThat(mergeNameAndSurname(contactInfoFromEditForm), equalTo(contactInfoFromDetailsPage.getNamesAndSurname().replace(" ", "")));
-        MatcherAssert.assertThat(contactInfoFromEditForm.getEmail1(), equalTo(contactInfoFromDetailsPage.getEmail1()));
+        MatcherAssert.assertThat(cleaned(contactInfoFromDetailsPage.getAllInfo()), equalTo(cleaned(mergeAllInfo(contactInfoFromEditForm))));
     }
 
-    private String mergeNameAndSurname(ContactData contact) {
-        return Arrays.asList(contact.getName(), contact.getSurname()).stream().filter((s) -> ! s.equals("")).collect(Collectors.joining());
+    private String mergeAllInfo(ContactData contact) {
+        return Arrays.asList(contact.getName(), contact.getSurname(), contact.getAddress(), contact.getHomeNumber(), contact.getMobileNumber(), contact.getWorkNumber(), contact.getEmail1()).stream().filter((s) -> !s.equals("")).collect(Collectors.joining());
+    }
+
+    private String cleaned(String allInfo) {
+        return allInfo.replaceAll("\\s", "").replaceAll("[-()]", "").replace("H:", "").replace("M:", "").replace("W:", "");
     }
 }
