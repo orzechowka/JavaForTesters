@@ -7,7 +7,8 @@
     "mobileNumber": "mobile number 0",
     "workNumber": "work number 0",
     "email1": "email 0",
-    "group": "test 0"
+    "group": "test 0",
+    "photo": "src\\test\\resources\\02.jpg"
   },
   {
     "name": "name 1",
@@ -17,6 +18,18 @@
     "mobileNumber": "mobile number 1",
     "workNumber": "work number 1",
     "email1": "email 1",
-    "group": "test 1"
+    "group": "test 1",
+    "photo": "src\\test\\resources\\02.jpg"
+  },
+  {
+    "name": "name 2",
+    "surname": "surname 2",
+    "address": "address 2",
+    "homeNumber": "home number 2",
+    "mobileNumber": "mobile number 2",
+    "workNumber": "work number 2",
+    "email1": "email 2",
+    "group": "test 2",
+    "photo": "src\\test\\resources\\02.jpg"
   }
 ]

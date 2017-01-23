@@ -55,13 +55,13 @@ public class ContactCreationTests extends TestBase {
 
     @Test (dataProvider = "validContactsFromJson")
     public void ContactCreationTests(ContactData contact) {
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
         app.goTo().newContact();
-        // File photo = new File("src/test/resources/02.jpg");
+        //String photo = "src/test/resources/02.jpg";
         app.contact().create(contact);
         app.contact().returnToHomepage();
         assertThat(app.contact().count(), equalTo(before.size()+1));
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contacts();
         assertThat(after, equalTo(
                 before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     }
