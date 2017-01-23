@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.jft.addressbook.model.ContactData;
 import ru.stqa.jft.addressbook.model.Contacts;
+import ru.stqa.jft.addressbook.model.Groups;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -178,4 +179,10 @@ public class ContactHelper extends HelperBase {
     private void openDetailsPageById(int id) {
         wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
     }
+/*
+    public void selectGroup(Groups group) {
+        if(group.getGroups().size() > 0) {
+        new Select(wd.findElement(By.name(groupName))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+    }
+    */
 }
