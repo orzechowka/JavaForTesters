@@ -34,7 +34,9 @@ public class ContactAddingToGroupTests extends TestBase{
         String groupName = group.getName();
         Contacts contacts = app.db().contacts();
         Contacts contactsInGroup = group.getContacts();
-        contacts.retainAll(contactsInGroup);
+        if (contactsInGroup.size() >= 1) {
+            contacts.retainAll(contactsInGroup);
+        }
 
         for (ContactData contact: contacts) {
             contactAdded = new ContactData();
