@@ -21,19 +21,27 @@ public class ContactAddingToGroupTests extends TestBase{
     ContactData contactAdded;
     int id;
 
-    @Test
-    public void testContactAddToGroup() {
+    @BeforeMethod
 
+    public void ensurePreconditions() {
+        if (app.db().contacts().size() == 0) {
+            app.goTo().newContact();
+            app.contact().create(new ContactData().withName("Jan").withSurname("Kowalski").withAddress("Zielona 7").withHomeNumber("675-76-16").withMobileNumber("123 43 23").withWorkNumber("(44)-67-678").withEmail1("kowalski@poczta.pl"));
+        }
         if (app.db().groups().size() == 0) {
             GroupData group = new GroupData().withName("group").withHeader("header").withFooter("footer");
             app.group().create(group);
         }
+    }
+    @Test
+    public void testContactAddToGroup() {
 
         Groups groups = app.db().groups();
         GroupData group = groups.iterator().next();
         String groupName = group.getName();
         Contacts contacts = app.db().contacts();
         Contacts contactsInGroup = group.getContacts();
+
         if (contactsInGroup.size() >= 1) {
             contacts.retainAll(contactsInGroup);
         }
