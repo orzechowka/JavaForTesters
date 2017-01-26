@@ -187,6 +187,14 @@ public class ContactHelper extends HelperBase {
     public void selectGroup(String group) {
         new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group);
     }
+
+    public void chooseGroup(String groupName) {
+        new Select(wd.findElement(By.name("group"))).selectByVisibleText(groupName);
+    }
+
+    public void removeFromGroup() {
+        wd.findElement(By.name("remove")).click();
+    }
 /*
     public void selectGroup(Groups group) {
         if(group.getGroups().size() > 0) {

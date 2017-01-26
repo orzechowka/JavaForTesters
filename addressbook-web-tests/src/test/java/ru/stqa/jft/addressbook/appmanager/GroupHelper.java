@@ -102,4 +102,7 @@ public class GroupHelper extends HelperBase {
     }
 
 
+    public void goToGroupPage(int groupId) {
+        wd.findElement(By.cssSelector("a[href='./?group=" + groupId + "'")).click();
+    }
 }
