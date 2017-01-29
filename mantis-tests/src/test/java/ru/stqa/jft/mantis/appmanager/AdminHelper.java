@@ -42,23 +42,10 @@ public class AdminHelper extends HelperBase {
             }
         }
     }
-    /*
-    public List<String> chooseUser() {
-        List<WebElement> users = wd.findElements(By.xpath("/html/body/div[3]/div[2]/div[2]/div/div/div[4]/div[2]/div[2]/div/table/tbody/tr"));
-        List<String> userInfo = new ArrayList<>();
-        for (int i = 1; i < users.size(); i++) {
-            String name = wd.findElement(By.xpath("/html/body/div[3]/div[2]/div[2]/div/div/div[4]/div[2]/div[2]/div/table/tbody/tr[" + Integer.toString(i) +"]/td/a")).getText();
-            if (!name.equals("administrator")) {
-                String email = wd.findElement(By.xpath("/html/body/div[3]/div[2]/div[2]/div/div/div[4]/div[2]/div[2]/div/table/tbody/tr[" + Integer.toString(i) + "]/td[3]")).getText();
-                userInfo.add(name);
-                userInfo.add(email);
-                wd.findElement(By.xpath("/html/body/div[3]/div[2]/div[2]/div/div/div[4]/div[2]/div[2]/div/table/tbody/tr[" + Integer.toString(i) + "]/td/a")).click();
-                break;
-            }
-        }
-        return userInfo;
+
+    public String getUserName(){
+        return getUsersNamesList().get(1);
     }
-    */
 
     public String getMail(){
         List<String> emailList = new ArrayList<>();
@@ -72,12 +59,6 @@ public class AdminHelper extends HelperBase {
         }
         return email;
     }
-    /*
-    public String  getMail() {
-        // wyciagnac to do metody innej (fora)
-        return chooseUser().get(1);
-    }
-    */
 
     public void resetPassword() {
         wd.findElement(By.cssSelector("input[value='Nowe hasło']")).click();

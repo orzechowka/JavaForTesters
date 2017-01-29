@@ -31,14 +31,15 @@ public class ChangingPasswordTests extends TestBase{
         app.admin().chooseUser();
         app.admin().resetPassword();
         String email = app.admin().getMail();
-        //
+        String username = app.admin().getUserName();
+
 
         List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
         String confirmationLink = findConfirmationLink(mailMessages, email);
         String password = "password1";
         app.admin().changePassword(confirmationLink, password);
 
-        assertTrue(app.newSession().login(email, password));
+        assertTrue(app.newSession().login(username, password));
 
     }
 
