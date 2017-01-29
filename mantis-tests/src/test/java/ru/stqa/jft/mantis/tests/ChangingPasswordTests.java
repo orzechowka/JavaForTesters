@@ -4,6 +4,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
+import ru.stqa.jft.mantis.appmanager.HttpSession;
 import ru.stqa.jft.mantis.model.MailMessage;
 
 import javax.mail.MessagingException;
@@ -15,29 +16,31 @@ import static org.testng.Assert.assertTrue;
 /**
  * Created by Anna on 2017-01-28.
  */
-public class RegistrationTests extends TestBase{
-
+public class ChangingPasswordTests extends TestBase{
 
     @BeforeMethod
     public void startMailServer() {
         app.mail().start();
     }
 
-
     @Test
-    public void testRegistration() throws IOException, MessagingException {
-        String user = "user17";
-        String password = "password";
-        String email = "user17@localhost.localdomain";
-        app.registration().start(user, email);
+    public void testChangePassword() throws IOException, MessagingException {
+        app.admin().login("administrator", "root");
+        app.admin().goToSettings();
+        app.admin().goToManageUsers();
+        app.admin().chooseUser();
+        app.admin().resetPassword();
+        String email = app.admin().getMail();
+        //
 
-        List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
+        List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
         String confirmationLink = findConfirmationLink(mailMessages, email);
-        app.registration().finish(confirmationLink, password);
-        assertTrue(app.newSession().login(user, password));
+        String password = "password1";
+        app.admin().changePassword(confirmationLink, password);
+
+        assertTrue(app.newSession().login(email, password));
 
     }
-
 
     private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
         MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
@@ -50,5 +53,4 @@ public class RegistrationTests extends TestBase{
         app.mail().stop();
 
     }
-
 }

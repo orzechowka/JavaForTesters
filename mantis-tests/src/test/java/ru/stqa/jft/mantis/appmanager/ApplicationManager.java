@@ -24,6 +24,7 @@ public class ApplicationManager {
     private RegistrationHelper registrationHelper;
     private FtpHelper ftp;
     private MailHelper mailHelper;
+    private AdminHelper adminHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -56,6 +57,13 @@ public class ApplicationManager {
         return registrationHelper;
     }
 
+    public AdminHelper admin() {
+        if (adminHelper == null) {
+            adminHelper = new AdminHelper(this);
+        }
+        return adminHelper;
+    }
+
     public FtpHelper ftp() {
         if(ftp == null) {
             ftp = new FtpHelper(this);
@@ -84,4 +92,6 @@ public class ApplicationManager {
         }
         return mailHelper;
     }
+
+
 }
