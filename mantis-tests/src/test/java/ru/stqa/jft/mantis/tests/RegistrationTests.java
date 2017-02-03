@@ -27,7 +27,7 @@ public class RegistrationTests extends TestBase{
 
     @Test
     public void testRegistration() throws IOException, MessagingException, ServiceException {
-        skipIfNotFixed(0000010);
+        skipIfNotFixed(10);
         String user = "user6";
         String password = "password";
         String email = "user5@localhost.localdomain";
