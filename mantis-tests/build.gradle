@@ -12,6 +12,7 @@ dependencies {
     compile 'org.subethamail:subethasmtp:3.1.7'
     compile 'ru.lanwen.verbalregex:java-verbal-expressions:1.4'
     compile 'org.slf4j:slf4j-log4j12:1.7.22'
+    compile 'biz.futureware.mantis:mantis-axis-soap-client:1.2.9'
 }
 
 test {
