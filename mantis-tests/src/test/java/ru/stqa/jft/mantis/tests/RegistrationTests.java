@@ -7,6 +7,7 @@ import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.jft.mantis.model.MailMessage;
 
 import javax.mail.MessagingException;
+import javax.xml.rpc.ServiceException;
 import java.io.IOException;
 import java.util.List;
 
@@ -25,8 +26,9 @@ public class RegistrationTests extends TestBase{
 
 
     @Test
-    public void testRegistration() throws IOException, MessagingException {
-        String user = "user5";
+    public void testRegistration() throws IOException, MessagingException, ServiceException {
+        skipIfNotFixed(0000010);
+        String user = "user6";
         String password = "password";
         String email = "user5@localhost.localdomain";
         app.registration().start(user, email);
