@@ -7,7 +7,6 @@ import org.testng.SkipException;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.jft.mantis.appmanager.ApplicationManager;
-import ru.stqa.jft.mantis.model.Issue;
 
 import javax.xml.rpc.ServiceException;
 import java.io.File;

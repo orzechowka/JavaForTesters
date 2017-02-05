@@ -9,13 +9,8 @@ import org.apache.http.message.BasicNameValuePair;
 import org.testng.SkipException;
 import org.apache.http.client.fluent.Executor;
 
-
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.rmi.RemoteException;
 import java.util.Set;
-
-import static com.sun.javafx.runtime.async.BackgroundExecutor.getExecutor;
 
 /**
  * Created by Anna on 2017-02-03.
@@ -40,16 +35,23 @@ public class TestBase {
     }
 
     public boolean isIssueOpen(int issueId) throws IOException {
-        String json = getExecutor().execute(Request.Get("http://demo.bugify.com/api/issues/" + issueId + ".json")).returnContent().asString();
-        JsonElement parsed = new JsonParser().parse(json);
-        JsonElement issue = parsed.getAsJsonObject().get("issue");
-        Issue issue1 = new Gson().fromJson(issue, new TypeToken<Issue>(){}.getType());
+        Set<Issue> issues = getIssues();
+        String status ="";
 
-        if (issue1.getStatus().equals("resolved")) {
+        for (Issue issue: issues) {
+            int id = issue.getId();
+            if (id == issueId) {
+                status = issue.getStatus();
+                break;
+            }
+        }
+
+        if (status.equals("Resolved") || status.equals("Closed") || status.equals("")) {
             return false;
         } else {
             return true;
         }
+
     }
 
     public void skipIfNotFixed(int issueId) throws IOException {

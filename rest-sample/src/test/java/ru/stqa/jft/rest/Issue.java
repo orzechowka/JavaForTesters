@@ -8,14 +8,14 @@ public class Issue {
     private int id;
     private String subject;
     private String description;
-    private String status;
+    private String state_name;
 
     public String getStatus() {
-        return status;
+        return state_name;
     }
 
-    public Issue withStatus(String status) {
-        this.status = status;
+    public Issue withStatus(String state_name) {
+        this.state_name = state_name;
         return this;
     }
 
