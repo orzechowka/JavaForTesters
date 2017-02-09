@@ -12,14 +12,14 @@ public class PointTests {
     public void testPoint() {
         Point p1 = new Point(2, 5);
         Point p2 = new Point(5, 9);
-        Assert.assertEquals(p1.distance(p2), 3.0);
+        Assert.assertEquals(p1.distance(p2), 5.0);
     }
 
     @Test
     public void testPoint1() {
         Point p1 = new Point(9, 5);
         Point p2 = new Point(4, 5);
-        Assert.assertEquals(p1.distance(p2), 3.0);
+        Assert.assertEquals(p1.distance(p2), 5.0);
     }
 
     @Test
