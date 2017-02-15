@@ -70,5 +70,7 @@ public class ContactDeletionFromGroup extends TestBase{
 
         assertThat(app.db().contacts(), equalTo(contacts.remove(contact)));
 
+
+
     }
 }
